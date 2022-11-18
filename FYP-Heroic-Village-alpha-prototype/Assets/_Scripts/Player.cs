@@ -68,7 +68,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         MagicLineOfSight();
-        RotateFollowMouse();
+        //RotateFollowMouse();
         // Move on mouse click 
         if (canMove)
         {
