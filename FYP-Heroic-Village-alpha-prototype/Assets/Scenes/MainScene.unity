@@ -527,8 +527,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1082760384}
-        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+      - m_Target: {fileID: 1082760391}
+        m_TargetAssemblyTypeName: PlayerCombat, Assembly-CSharp
         m_MethodName: CastSpell
         m_Mode: 3
         m_Arguments:
@@ -868,8 +868,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1082760384}
-        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+      - m_Target: {fileID: 1082760391}
+        m_TargetAssemblyTypeName: PlayerCombat, Assembly-CSharp
         m_MethodName: CastSpell
         m_Mode: 3
         m_Arguments:
@@ -1291,7 +1291,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &201706483
 Transform:
   m_ObjectHideFlags: 0
@@ -2149,8 +2149,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1082760384}
-        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+      - m_Target: {fileID: 1082760391}
+        m_TargetAssemblyTypeName: PlayerCombat, Assembly-CSharp
         m_MethodName: CastSpell
         m_Mode: 3
         m_Arguments:
@@ -6943,15 +6943,10 @@ MonoBehaviour:
   SelectedTarget: {fileID: 0}
   manacost: 10
   currentHealth: 0
-  maxHealth: 100
+  MaxHealth: 0
   currentMana: 0
   maxMana: 0
   clickDistance: 0
-  spellPrefab:
-  - {fileID: 7301269761715261549, guid: afbf2dbc036d5f64abceb9df7c378073, type: 3}
-  - {fileID: 458514247795565560, guid: 3d4cff6b31b82d74482da397eeb2b480, type: 3}
-  - {fileID: 1800952293168636718, guid: 4e388628b7ec75a43875d3715429e666, type: 3}
-  _magicCastExit: {fileID: 2092096239}
 --- !u!114 &1082760385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7033,6 +7028,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d34964cd4d12d14a9b79c9685cf52f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spellPrefab:
+  - {fileID: 7301269761715261549, guid: afbf2dbc036d5f64abceb9df7c378073, type: 3}
+  - {fileID: 458514247795565560, guid: 3d4cff6b31b82d74482da397eeb2b480, type: 3}
+  - {fileID: 1800952293168636718, guid: 4e388628b7ec75a43875d3715429e666, type: 3}
+  _magicCastExit: {fileID: 2092096239}
 --- !u!54 &1082760392
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -14257,7 +14257,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2092096239}
   m_Layer: 0
-  m_Name: MagicPivot
+  m_Name: MagicCastExit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
