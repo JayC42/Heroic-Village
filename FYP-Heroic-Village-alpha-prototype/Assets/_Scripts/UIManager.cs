@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
@@ -7,9 +8,14 @@ using UnityEngine.UI;
 public class UIManager : Singleton <UIManager>
 {
     //SpellCast on button key press 
-    [SerializeField]
-    private Button[] _actionButtons;
+    public Button[] _actionButtons;
     private KeyCode _action1, _action2, _action3, _action4;
+
+    // Public properties
+    public KeyCode ActionSkill_01 => _action1;
+    public KeyCode ActionSkill_02 => _action2;
+    public KeyCode ActionSkill_03 => _action3;
+    public KeyCode ActionSkill_04 => _action4;
 
     [Header("Player UI")]
     [SerializeField] private Image healthbar;
@@ -46,6 +52,10 @@ public class UIManager : Singleton <UIManager>
         {
             txt.color = Color.black;
         }
+        //foreach (Image img in castTimeImg)
+        //{
+        //    img.fillAmount = 0;
+        //}
         //skillTxt[index].text = magicData[index].Name;
         //skillTxt[index].color = Color.black;
         //castTimeImg[index].color = Color.white;
@@ -74,7 +84,7 @@ public class UIManager : Singleton <UIManager>
             ActionButtonOnClick(3);
         }
     }
-    private void ActionButtonOnClick(int btnIndex)
+    public void ActionButtonOnClick(int btnIndex)
     {
         _actionButtons[btnIndex].onClick.Invoke();
     }
@@ -99,4 +109,5 @@ public class UIManager : Singleton <UIManager>
         castTimeTxt[index].color = Color.black;
         
     }
+    
 }

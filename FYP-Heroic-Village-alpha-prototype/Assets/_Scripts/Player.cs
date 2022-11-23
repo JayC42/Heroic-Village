@@ -16,11 +16,11 @@ public class Player : MonoBehaviour
 
     [Header("Player Stats")]
     [SerializeField] private float currentHealth;
-    [SerializeField] private float MaxHealth;
+    [SerializeField] private float MaxHealth = 100;
     [SerializeField] private float currentMana;
-    [SerializeField] private float maxMana;
-    [SerializeField] private float clickDistance;
-
+    [SerializeField] private float maxMana = 50;
+    [SerializeField] private float clickDistance = 300;
+    [SerializeField] private float manaRegenTime = 10; 
     public GameObject MySelectedTarget { get; set; }
     public float MyMaxMana => maxMana;
     public float MyCurrentMana
@@ -49,11 +49,9 @@ public class Player : MonoBehaviour
     void InitializeStats()
     {
         // Set player health
-        MaxHealth = 100f;
         currentHealth = MaxHealth;
 
         // Set player mana
-        maxMana = 50f; 
         currentMana = maxMana;
 
         // Set max click distance
@@ -88,6 +86,8 @@ public class Player : MonoBehaviour
         { 
             MySelectedTarget = null; 
         }
+        // Auto-regen skills
+        //RestoreManaOverTime(20, 2);
         //Debug.DrawRay(transform.position, transform.forward * 5f, Color.red);
 
         #region FOR DEBUGGING
@@ -98,9 +98,10 @@ public class Player : MonoBehaviour
         else
             HaveTarget = true;
 
+        // Testing for mana regen
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            RestoreMana(50); 
+            currentMana -= 50;
         }
 
         #endregion
@@ -174,15 +175,26 @@ public class Player : MonoBehaviour
                 currentHealth = MaxHealth;
         }
     }
-    public void RestoreMana(int amount)
+    public void RestoreManaOverTime(int amount, float duration)
     {
-        // Add some mp to player
+        // Restore some mp to player after X seconds
         if (currentMana < maxMana)
         {
             currentMana += amount;
+            //StartCoroutine(RestoreManaOverTimeCoroutine(amount, duration));
             UIManager.Instance.UpdateManaBar(currentMana, maxMana);
-            if (currentMana > maxMana)
-                currentMana = maxMana;
+            if (currentMana > maxMana) { currentMana = maxMana; }
+        }
+    }
+    IEnumerator RestoreManaOverTimeCoroutine(int regenAmount, float duration)
+    {
+        float amountRestored = 0;
+        float regenPerLoop = regenAmount / duration;
+        while (amountRestored < regenAmount)
+        {
+            currentMana += regenPerLoop;
+            amountRestored += regenPerLoop; 
+            yield return new WaitForSeconds(manaRegenTime);
         }
     }
     public void TakeDamage(int amount)

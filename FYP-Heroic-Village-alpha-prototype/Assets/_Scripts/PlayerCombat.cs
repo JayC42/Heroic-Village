@@ -1,11 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class PlayerCombat : MonoBehaviour
 {
     Player _player;
-    protected bool isAttacking = false;                 // can be used to activate animation for attack later on
+    protected bool isAttacking = false;    
+    bool isCooldown = false;
+    // can be used to activate animation for attack later on
     protected Coroutine attackRoutine;
     private MagicBook magicbook;
     // temp magic spells array
@@ -18,6 +23,7 @@ public class PlayerCombat : MonoBehaviour
         _player = GetComponent<Player>();
         magicbook = GetComponent<MagicBook>();
     }
+
     public void SelectEnemy(EnemyTarget target)
     {
         //Debug.Log("Enemy selected");
@@ -69,7 +75,7 @@ public class PlayerCombat : MonoBehaviour
         {
             StopCoroutine(attackRoutine);
             isAttacking = false;
-            Debug.Log("Stopped casting");
+            //Debug.Log("Stopped casting");
         }
 
     }
@@ -95,6 +101,13 @@ public class PlayerCombat : MonoBehaviour
 
             //SpellScript s = Instantiate(spellPrefab[spellIndex], _magicCastExit.position, Quaternion.identity).GetComponent<SpellScript>();
             SpellScript s = Instantiate(newSpell.SpellPrefab, _magicCastExit.position, Quaternion.identity).GetComponent<SpellScript>();
+            // Activate skill cooldown UI Timer
+            //SkillCooldownTimer(UIManager.Instance.castTimeImg[spellIndex], newSpell.CastTime, spellIndex);
+
+            //if (UIManager.Instance.castTimeImg[spellIndex])
+            //{
+            //    Debug.Log("Now casting" + spellIndex);
+            //}
             s.SpellTarget = _player.MySelectedTarget.transform;
             yield return new WaitForSeconds(newSpell.CastTime);
             StopAttack();
