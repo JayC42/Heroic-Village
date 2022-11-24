@@ -49,6 +49,8 @@ public class CageWall : MonoBehaviour
         {
             isDestroyed = true; 
             isUnderAtk = false;
+            // Maybe can call the enemies clear target mwthod here?
+
         }
 
     }
