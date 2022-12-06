@@ -1901,7 +1901,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 9b366a81541b2dc4ba507da1b60042bd, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9b366a81541b2dc4ba507da1b60042bd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5515,7 +5515,7 @@ RectTransform:
   m_Children:
   - {fileID: 1463558228}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -5823,7 +5823,7 @@ Transform:
   - {fileID: 664806896}
   - {fileID: 623591371}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &883417726
 GameObject:
@@ -6041,7 +6041,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 5aaa9496b0ed8df44867fd6adcc6ba08, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5aaa9496b0ed8df44867fd6adcc6ba08, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7285,6 +7285,9 @@ GameObject:
   - component: {fileID: 1082760385}
   - component: {fileID: 1082760392}
   - component: {fileID: 1082760386}
+  - component: {fileID: 1082760393}
+  - component: {fileID: 1082760394}
+  - component: {fileID: 1082760395}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -7414,6 +7417,10 @@ MonoBehaviour:
   HaveTarget: 0
   SelectedTarget: {fileID: 0}
   manacost: 10
+  animator: {fileID: 1082760394}
+  playerInput: {fileID: 1082760393}
+  controller: {fileID: 1082760395}
+  movementSpeed: 20
   currentHealth: 0
   MaxHealth: 100
   currentMana: 0
@@ -7553,6 +7560,97 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &1082760393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1082760378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 703d5a2856a9fa64c80e53dd42632a1b, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1082760384}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: OnMove
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: dd9045b8-750f-46b2-8e8d-fa7f5d586e34
+    m_ActionName: Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ae02878a-dcd9-4df4-a05d-8f7c27193c37
+    m_ActionName: Player/Look[/Mouse/delta]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: dfd149f8-e85c-4652-ba70-d042e896103e
+    m_ActionName: Player/Fire[/Mouse/leftButton]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!95 &1082760394
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1082760378}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!143 &1082760395
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1082760378}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1083091777
 GameObject:
   m_ObjectHideFlags: 0
@@ -8094,13 +8192,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Basic Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 8066849987342995875, guid: c784497aa65278d47afd80d55cf61220, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8066849987342995885, guid: c784497aa65278d47afd80d55cf61220, type: 3}
       propertyPath: power
       value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 8066849987342995887, guid: c784497aa65278d47afd80d55cf61220, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8066849987342995887, guid: c784497aa65278d47afd80d55cf61220, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8470,7 +8572,7 @@ Transform:
   - {fileID: 886746667}
   - {fileID: 705507995}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1167336598
 GameObject:
@@ -11357,7 +11459,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8066849987342995887, guid: c784497aa65278d47afd80d55cf61220, type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 8066849987342995887, guid: c784497aa65278d47afd80d55cf61220, type: 3}
       propertyPath: m_LocalPosition.x
@@ -12417,7 +12519,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1735301598 stripped
 GameObject:

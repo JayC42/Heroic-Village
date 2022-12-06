@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.XR;
 /// <summary>
 /// This script allows for us to click anywhere on the NavMesh and have our player move there.
 /// </summary>
@@ -14,13 +15,21 @@ public class Player : MonoBehaviour
     public GameObject SelectedTarget;
     [SerializeField] private float manacost = 10f;
 
+    [Header("Input References")]
+    [SerializeField] private Animator animator = null;
+    [SerializeField] private PlayerInput playerInput = null;
+    [SerializeField] private CharacterController controller = null;
+
     [Header("Player Stats")]
+    [SerializeField] private float movementSpeed = 5f;
     [SerializeField] private float currentHealth;
     [SerializeField] private float MaxHealth = 100;
     [SerializeField] private float currentMana;
     [SerializeField] private float maxMana = 50;
     [SerializeField] private float clickDistance = 300;
-    [SerializeField] private float manaRegenTime = 10; 
+    [SerializeField] private float manaRegenTime = 10;
+
+    public PlayerInput PlayerInput => playerInput;
     public GameObject MySelectedTarget { get; set; }
     public float MyMaxMana => maxMana;
     public float MyCurrentMana
@@ -34,6 +43,14 @@ public class Player : MonoBehaviour
         set { manacost = value; }
     }
     private NavMeshAgent playerAgent;
+    private Vector2 inputMovement;
+    private Vector2 currentInputVector;
+    private Vector2 smoothInputVelocity;
+    private float smoothInputSpeed = 0.2f;
+    private float rotSpeed = 0.1f;
+    private Quaternion rotGoal;
+    private Rigidbody playerBody;
+
     //private SpellBook _spellBook;
 
     protected bool canMove => Input.GetMouseButton(0) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject();
@@ -67,7 +84,7 @@ public class Player : MonoBehaviour
             playerAgent = GetComponent<NavMeshAgent>();
 
         _playerCombat = GetComponent<PlayerCombat>();
-
+        playerBody = GetComponent<Rigidbody>();
 
         //EnemyTarget enemytarget = GetComponent<EnemyTarget>();
     }
@@ -89,7 +106,25 @@ public class Player : MonoBehaviour
         // Auto-regen skills
         //RestoreManaOverTime(20, 2);
         //Debug.DrawRay(transform.position, transform.forward * 5f, Color.red);
+        #region Movement 
 
+        currentInputVector = Vector2.SmoothDamp(currentInputVector, inputMovement, ref smoothInputVelocity, smoothInputSpeed);
+        Vector3 move = new Vector3(currentInputVector.x, 0f, currentInputVector.y);
+        //var finalMovement = inputMovement;
+
+        var finalMovement = move * movementSpeed * Time.deltaTime;
+
+        controller.Move(finalMovement);
+
+        Vector3 velocity = controller.velocity;
+        velocity.y = 0f;
+
+        if (velocity.magnitude > 0.2f)
+        { 
+            rotGoal = Quaternion.LookRotation(finalMovement);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotGoal, rotSpeed);
+        }
+        #endregion
         #region FOR DEBUGGING
         SelectedTarget = MySelectedTarget; 
 
@@ -106,6 +141,8 @@ public class Player : MonoBehaviour
 
         #endregion
     }
+
+
     private void RotateFollowMouse()
     {
         //Vector3 mousePos = Input.mousePosition;
@@ -221,4 +258,16 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void OnMove(InputAction.CallbackContext ctx)
+    {
+        inputMovement = ctx.ReadValue<Vector2>();
+    }
+
+    // FOR FUTURE MOVES
+    public void OnDodge(InputAction.CallbackContext ctx)
+    {
+        if (!ctx.performed) { return; }
+
+        //animator.SetTrigger("Dodge");
+    }
 }
