@@ -7,6 +7,12 @@ using UnityEngine.UI;
 
 public class UIManager : Singleton <UIManager>
 {
+    [Header("Towers")]     // Tower placements
+    public Button ArrowTowerButton, CannonTowerButton, IceTowerButton;
+    public Image PlacementTowerUIMenu;
+    private TowerPlacementController tpc;
+    public GameObject arrowTowerPrefab, cannonTowerPrefab, iceTowerPrefab; 
+
     //SpellCast on button key press 
     public Button[] _actionButtons;
     private KeyCode _action1, _action2, _action3, _action4;
@@ -31,6 +37,7 @@ public class UIManager : Singleton <UIManager>
 
     void Start()
     {
+        SetupButtons();
         // Keybinds to spells
         _action1 = KeyCode.Alpha1;
         _action2 = KeyCode.Alpha2;
@@ -109,5 +116,40 @@ public class UIManager : Singleton <UIManager>
         castTimeTxt[index].color = Color.black;
         
     }
-    
+
+    // tower placement UI
+    public void ShowTowerMenu(TowerPlacementController placementPoint)
+    {
+        //print("Show tower");
+        tpc = placementPoint;
+        PlacementTowerUIMenu.gameObject.SetActive(true); 
+    }
+    public void CloseTowerMenu()
+    {
+        PlacementTowerUIMenu.gameObject.SetActive(false);
+    }
+    private void SetupButtons()
+    {
+        ArrowTowerButton.onClick.AddListener(() =>
+        {
+            GameObject tower = Instantiate(arrowTowerPrefab);
+            tower.transform.position = tpc.transform.position;
+            tpc.TowerPlaced(tower.GetComponent<BaseTowerController>());
+            CloseTowerMenu();
+        });
+        CannonTowerButton.onClick.AddListener(() =>
+        {
+            GameObject tower = Instantiate(cannonTowerPrefab);
+            tower.transform.position = tpc.transform.position;
+            tpc.TowerPlaced(tower.GetComponent<BaseTowerController>());
+            CloseTowerMenu();
+        });
+        IceTowerButton.onClick.AddListener(() =>
+        {
+            GameObject tower = Instantiate(iceTowerPrefab);
+            tower.transform.position = tpc.transform.position;
+            tpc.TowerPlaced(tower.GetComponent<BaseTowerController>());
+            CloseTowerMenu();
+        });
+    }
 }
