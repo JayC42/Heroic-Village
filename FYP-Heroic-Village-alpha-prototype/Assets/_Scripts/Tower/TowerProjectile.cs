@@ -7,6 +7,7 @@ public class TowerProjectile : MonoBehaviour
     private Transform target;
     private Vector3 initialPosition, targetPosition;
     private float speed;
+    private float damage; 
     private float startTime;
     private bool hasInitialized = false;
     private Rigidbody rb;
@@ -45,17 +46,19 @@ public class TowerProjectile : MonoBehaviour
         }
              
     }
-    public void Initialize(Transform target, float speed)
+    public void Initialize(Transform target, float speed, float damage)
     {
         this.target = target;
         this.speed = speed;
+        this.damage = damage; 
         startTime = Time.time;
         hasInitialized = true;
     }
-    public void Initialize(Vector3 target, float speed)
+    public void Initialize(Vector3 target, float speed, float damage)
     {
         targetPosition = target;
         this.speed = speed;
+        this.damage = damage;
         startTime = Time.time;
         hasInitialized = true;
     }
@@ -79,7 +82,7 @@ public class TowerProjectile : MonoBehaviour
     {
         if (other.CompareTag("Enemy") && projectileType == ProjectileType.Arrow)
         {
-            other.GetComponent<EnemyTarget>().TakeDamage(1); 
+            other.GetComponent<EnemyTarget>().TakeDamage(damage); 
             Destroy(gameObject);
         }
         else if (other.CompareTag("Enemy") && projectileType == ProjectileType.Cannonball)
@@ -94,7 +97,7 @@ public class TowerProjectile : MonoBehaviour
         {
             if (hit.CompareTag("Enemy"))
             {
-                hit.GetComponent<EnemyTarget>().TakeDamage(2);
+                hit.GetComponent<EnemyTarget>().TakeDamage(damage);
             }
         }
         Destroy(gameObject);

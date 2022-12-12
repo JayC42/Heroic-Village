@@ -14,7 +14,7 @@ public class TowerPlacementController : MonoBehaviour
         Debug.Log("MouseDown"); 
         if (!occupied)
         {
-            UIManager.Instance.ShowTowerMenu(this);
+            UIManager.Instance.ShowBuildTowerMenu(this);
         }
         // Also maybe want to pause the game here perhaps? 
     }

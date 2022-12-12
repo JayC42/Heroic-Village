@@ -8,10 +8,13 @@ using UnityEngine.UI;
 public class UIManager : Singleton <UIManager>
 {
     [Header("Towers")]     // Tower placements
-    public Button ArrowTowerButton, CannonTowerButton, IceTowerButton;
+    public Button VillageHouseButton, ArrowTowerButton, CannonTowerButton, IceTowerButton;
+    public Button UpgradeBuildingButton; 
     public Image PlacementTowerUIMenu;
+    public Image UpgradeTowerUIMenu;
+    private BaseTowerController btc; 
     private TowerPlacementController tpc;
-    public GameObject arrowTowerPrefab, cannonTowerPrefab, iceTowerPrefab; 
+    public GameObject villageHousePrefab, arrowTowerPrefab, cannonTowerPrefab, iceTowerPrefab; 
 
     //SpellCast on button key press 
     public Button[] _actionButtons;
@@ -118,38 +121,57 @@ public class UIManager : Singleton <UIManager>
     }
 
     // tower placement UI
-    public void ShowTowerMenu(TowerPlacementController placementPoint)
+    public void ShowBuildTowerMenu(TowerPlacementController placementPoint)
     {
         //print("Show tower");
         tpc = placementPoint;
         PlacementTowerUIMenu.gameObject.SetActive(true); 
     }
-    public void CloseTowerMenu()
+    public void CloseBuildTowerMenu()
     {
         PlacementTowerUIMenu.gameObject.SetActive(false);
     }
+    public void ShowBuildingUpgradeMenu(BaseTowerController baseTower)
+    {
+        btc = baseTower; 
+        UpgradeTowerUIMenu.gameObject.SetActive(true);
+    }
     private void SetupButtons()
     {
+        VillageHouseButton.onClick.AddListener(() =>
+        {
+            GameObject house = Instantiate(villageHousePrefab);
+            house.transform.position = tpc.transform.position;
+            tpc.TowerPlaced(house.GetComponent<BaseTowerController>());
+            CloseBuildTowerMenu();
+        });
         ArrowTowerButton.onClick.AddListener(() =>
         {
             GameObject tower = Instantiate(arrowTowerPrefab);
             tower.transform.position = tpc.transform.position;
             tpc.TowerPlaced(tower.GetComponent<BaseTowerController>());
-            CloseTowerMenu();
+            CloseBuildTowerMenu();
         });
         CannonTowerButton.onClick.AddListener(() =>
         {
             GameObject tower = Instantiate(cannonTowerPrefab);
             tower.transform.position = tpc.transform.position;
             tpc.TowerPlaced(tower.GetComponent<BaseTowerController>());
-            CloseTowerMenu();
+            CloseBuildTowerMenu();
         });
         IceTowerButton.onClick.AddListener(() =>
         {
             GameObject tower = Instantiate(iceTowerPrefab);
             tower.transform.position = tpc.transform.position;
             tpc.TowerPlaced(tower.GetComponent<BaseTowerController>());
-            CloseTowerMenu();
+            CloseBuildTowerMenu();
+        });
+
+        // UPGRADES
+        UpgradeBuildingButton.onClick.AddListener(() =>
+        {
+            btc.UpgradeTower();
+            UpgradeTowerUIMenu.gameObject.SetActive(false); 
         });
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BombTowerController : BaseTowerController
 {
+    private float bulletSpeed = 0.5f;
     public override IEnumerator Shoot(Transform target)
     {
         isShooting = true;
@@ -13,8 +14,8 @@ public class BombTowerController : BaseTowerController
             GameObject projectile = Instantiate(projectilePrefab);
             projectile.transform.position = shootingPoint.position;
             projectile.transform.rotation = shootingPoint.rotation;
-            projectile.GetComponent<TowerProjectile>().Initialize(target, 0.5f);
-            yield return new WaitForSeconds(shootingCooldown);
+            projectile.GetComponent<TowerProjectile>().Initialize(target, bulletSpeed, baseDamage);
+            yield return new WaitForSeconds(baseFireSpeed);
         }
         yield return null;
     }
