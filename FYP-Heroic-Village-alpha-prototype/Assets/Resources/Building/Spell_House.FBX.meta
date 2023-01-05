@@ -7,28 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: 01 - Default
-    second: {fileID: 2100000, guid: 3a85629ea0866dd4d8b697f9f12050ee, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: 02 - Default
-    second: {fileID: 2100000, guid: a0ddb1d6984464648a2c602ee12141b9, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
       name: Glass
     second: {fileID: 2100000, guid: 8b8ffce71dbb105468e05b5b584c74b9, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: House_Wood
-    second: {fileID: 2100000, guid: c8cabaab15966f7428493a5364486b63, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Metal
-    second: {fileID: 2100000, guid: f4dc6c4eda9e09f4d8ef0aff59706abe, type: 2}
+      name: Metal_Tex
+    second: {fileID: 2100000, guid: 3fb3fed2864ce9b4398165cdaa68da16, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -37,23 +22,23 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Roof_Top
-    second: {fileID: 2100000, guid: 84d2b393a7fe0224d99f7f476a7e7ad2, type: 2}
+      name: Roof_Top_Tex
+    second: {fileID: 2100000, guid: d94b078cb3024b646801233155048290, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Stone
-    second: {fileID: 2100000, guid: cc0fcf82e3dc2574899f22828af3f879, type: 2}
+      name: Stone_Tex
+    second: {fileID: 2100000, guid: cf5cb632d65b85e428237eb67e91f1f1, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Wall
-    second: {fileID: 2100000, guid: 66120dc9843e8ad4aaae8b9d36f07aa0, type: 2}
+      name: Wall_Tex
+    second: {fileID: 2100000, guid: d09596802c49d034497811588efc68a1, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Wood
-    second: {fileID: 2100000, guid: 52d5ba1caf10e804ebc2cb44b66c301a, type: 2}
+      name: Wood_Tex
+    second: {fileID: 2100000, guid: 58d984e197caf884b9c71c3b5dfab047, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

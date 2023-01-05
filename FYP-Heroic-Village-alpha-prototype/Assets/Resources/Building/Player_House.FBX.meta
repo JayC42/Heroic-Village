@@ -17,11 +17,6 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Roof
-    second: {fileID: 2100000, guid: afeeb7d0b3b6d6e459701dafac9a790e, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
       name: Roof_Tex
     second: {fileID: 2100000, guid: 7a6d269c078d2f94e8ec6e78bed97907, type: 2}
   - first:
@@ -32,11 +27,6 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Wall
-    second: {fileID: 2100000, guid: b1821d06fbc2c1f42a49889dac9f4381, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
       name: Wall_Tex
     second: {fileID: 2100000, guid: 7d4b195c951eafe4791bfd301fd2cde8, type: 2}
   - first:
@@ -44,16 +34,6 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Wood_ForBuilding
     second: {fileID: 2100000, guid: 4ec53e4b5ce852e488f898436dc7c6fe, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Wooden_Planks
-    second: {fileID: 2100000, guid: c6f6faad2bb3394448cdd3f2c8bef01f, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Wooden_Roof
-    second: {fileID: 2100000, guid: 268b8b110f310fb4fae14ad1e0a4b73b, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
