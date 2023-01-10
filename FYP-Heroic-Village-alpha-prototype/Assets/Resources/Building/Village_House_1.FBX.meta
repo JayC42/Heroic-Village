@@ -32,11 +32,6 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Wood_Beam_Tex
-    second: {fileID: 2100000, guid: 96b466f8826b99b48bc11934e0991aa9, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
       name: Wood_Main_Pillar_Tex
     second: {fileID: 2100000, guid: 4ac99e79537d466418fde773114accfd, type: 2}
   - first:
