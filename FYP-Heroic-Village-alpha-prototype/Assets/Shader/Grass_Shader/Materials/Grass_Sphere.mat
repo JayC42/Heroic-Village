@@ -103,19 +103,19 @@ Material:
     m_Floats:
     - _AlphaClip: 0
     - _BendDelta: 0.15
-    - _BladeBendCurve: 1.68
+    - _BladeBendCurve: 2.04
     - _BladeBendDistance: 0.27
     - _BladeCurve: 2
     - _BladeForward: 0.38
     - _BladeHeight: 0.25
     - _BladeHeightDelta: 0.05
-    - _BladeHeightMax: 0.75
-    - _BladeHeightMin: 0.25
+    - _BladeHeightMax: 0.32
+    - _BladeHeightMin: 0
     - _BladeSegments: 3
     - _BladeWidth: 0.015
     - _BladeWidthDelta: 0.02
     - _BladeWidthMax: 0.05
-    - _BladeWidthMin: 0.02
+    - _BladeWidthMin: 0.0181
     - _Blend: 0
     - _BumpScale: 1
     - _ClearCoatMask: 0
@@ -150,12 +150,12 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.23529413, g: 0.48235297, b: 0.039215688, a: 1}
+    - _BaseColor: {r: 0.31415695, g: 0.4716981, b: 0.18912424, a: 1}
     - _Color: {r: 0.11764706, g: 0.9137255, b: 0.13333334, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _GroundColor: {r: 0.5660378, g: 0.45540816, b: 0.32306874, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _TipColor: {r: 0.47770557, g: 0.8962264, b: 0.48615223, a: 1}
+    - _TipColor: {r: 0.4267533, g: 0.6603774, b: 0.4311201, a: 1}
     - _WindDirection: {r: 1, g: 0, b: 0, a: 0}
     - _WindVelocity: {r: 0.2, g: 0, b: 0.15, a: 0}
   m_BuildTextureStacks: []

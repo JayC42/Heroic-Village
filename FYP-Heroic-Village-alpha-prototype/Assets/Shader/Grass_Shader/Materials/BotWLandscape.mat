@@ -109,9 +109,9 @@ Material:
     - _BladeForward: 0.38
     - _BladeHeight: 0.25
     - _BladeHeightDelta: 0.05
-    - _BladeHeightMax: 2
-    - _BladeHeightMin: 1.35
-    - _BladeSegments: 3
+    - _BladeHeightMax: 0.81
+    - _BladeHeightMin: 0.18
+    - _BladeSegments: 2.48
     - _BladeWidth: 0.015
     - _BladeWidthDelta: 0.02
     - _BladeWidthMax: 0.1
@@ -129,8 +129,8 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _GrassFalloff: 0.107
-    - _GrassThreshold: 0.765
+    - _GrassFalloff: 0.073
+    - _GrassThreshold: 0.52
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
@@ -143,7 +143,7 @@ Material:
     - _Surface: 0
     - _TesselationFactor: 8
     - _TessellationGrassDistance: 0.15
-    - _WindFrequency: 0.005
+    - _WindFrequency: 0.002
     - _WindStrength: 0.5
     - _WorkflowMode: 1
     - _ZWrite: 1
